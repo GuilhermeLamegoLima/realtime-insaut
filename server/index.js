@@ -13,21 +13,18 @@ const io = new Server(server, {
   }
 });
 
-// Aqui armazenamos o último estado enviado
 let estadoAtual = null;
 
 io.on('connection', (socket) => {
   console.log('Usuário conectado:', socket.id);
 
-  // Quando um novo usuário entra, ele recebe o estado atual (se existir)
   if (estadoAtual) {
     socket.emit('novaMensagem', estadoAtual);
   }
 
-  // Quando um usuário envia uma nova mensagem
   socket.on('novaMensagem', (data) => {
-    estadoAtual = data; // Atualiza o estado atual
-    io.emit('novaMensagem', data); // Emite para todos os conectados
+    estadoAtual = data;
+    io.emit('novaMensagem', data);
   });
 
   socket.on('disconnect', () => {
@@ -36,9 +33,4 @@ io.on('connection', (socket) => {
 });
 
 const PORT = process.env.PORT || 3001;
-server.listen(PORT, () => console.log(`Servidor rodando na porta ${PORT}`));
-  });
-});
-
-const PORT = 3001;
 server.listen(PORT, () => console.log(`Servidor rodando na porta ${PORT}`));
