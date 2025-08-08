@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import io from 'socket.io-client';
 
-const socket = io('https://websocket-server-85kw.onrender.com'); // Substituir depois pela URL do servidor online
+const socket = io('https://websocket-server-85kw.onrender.com');
 
 function App() {
   const [mensagem, setMensagem] = useState('');
