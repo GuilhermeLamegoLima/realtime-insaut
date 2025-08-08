@@ -1,3 +1,0 @@
-git add index.js 
-git commit -m "Adiciona estado atual para sincronizar novos clientes"
-git push origin main
